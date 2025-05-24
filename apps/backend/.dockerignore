@@ -1,0 +1,58 @@
+# .NET build artifacts
+bin/
+obj/
+out/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio temp files
+.vs/
+.vscode/
+*.tmp
+*.temp
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Git
+.git
+.gitignore
+README.md
+
+# Docker
+Dockerfile*
+.dockerignore
+
+# Testing
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# OS generated files
+.DS_Store
+Thumbs.db

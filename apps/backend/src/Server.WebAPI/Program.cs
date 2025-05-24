@@ -4,6 +4,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// Add health checks
+builder.Services.AddHealthChecks();
+
+// Add CORS for frontend
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:3000", "http://frontend:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -12,7 +27,14 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+// Enable CORS
+app.UseCors();
+
 app.UseHttpsRedirection();
+
+// Health check endpoints
+app.MapHealthChecks("/health");
+app.MapHealthChecks("/health/ready");
 
 var summaries = new[]
 {

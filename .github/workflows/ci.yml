@@ -42,10 +42,10 @@ jobs:
       # Install frontend dependencies
       - run: yarn install --frozen-lockfile
       
+      - uses: nrwl/nx-set-shas@v4
+      
       # Restore .NET dependencies for backend
       - run: yarn nx affected -t restore
-      
-      - uses: nrwl/nx-set-shas@v4
 
       # Run lint for frontend projects
       - run: yarn nx affected -t lint
